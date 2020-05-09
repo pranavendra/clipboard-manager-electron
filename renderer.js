@@ -5,9 +5,23 @@
 // selectively enable features needed in the rendering
 // process.
 const Vue = require('vue/dist/vue.js')
+const { clipboard } = require('electron')
+
 const App = new Vue({
     el: '#app',
     data: {
-        title: 'Clipboard Buddy'
+        title: 'Clipboard Buddy',
+        history: [],
+    },
+    mounted() {
+      setInterval(this.checkClipboard, 500)
+    },
+    methods: {
+        checkClipboard() {
+            const text = clipboard.readText()
+            if (this.history[this.history.length - 1] !== text) {
+                this.history.push(text);
+            }
+        }
     }
 });

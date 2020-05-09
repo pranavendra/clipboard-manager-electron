@@ -6,11 +6,19 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
     <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
+    <link rel="stylesheet" href="styles.css">
     <title>Hello World!</title>
   </head>
   <body>
    <main id="app">
-     <h1>{{title}}</h1>
+    <nav class="panel">
+      <p class="panel-heading">
+        {{title}}
+      </p>
+      <a class="panel-block is-active" v-for="item in history">
+        {{item}}
+      </a>
+    </nav>
    </main>
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>

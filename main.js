@@ -1,5 +1,6 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow, Menu, Tray} = require('electron')
+
 const path = require('path')
 let tray = null
 
