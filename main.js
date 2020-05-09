@@ -1,6 +1,7 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, Menu, Tray} = require('electron')
 const path = require('path')
+let tray = null
 
 function createWindow () {
   // Create the browser window.
@@ -12,8 +13,11 @@ function createWindow () {
     }
   })
 
+  tray = new Tray('./icon/sphinx.png');
+
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
+
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
