@@ -22,6 +22,16 @@ const App = new Vue({
             if (this.history[this.history.length - 1] !== text) {
                 this.history.push(text);
             }
+        },
+        itemClicked(item) {
+            clipboard.writeText(item)
+            this.history = this.history.filter(text => text !== item)
+        }
+    },
+
+    computed: {
+        historyReversed() {
+            return this.history.slice().reverse()
         }
     }
 });

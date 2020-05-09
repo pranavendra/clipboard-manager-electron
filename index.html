@@ -15,8 +15,10 @@
       <p class="panel-heading">
         {{title}}
       </p>
-      <a class="panel-block is-active" v-for="item in history">
-        {{item}}
+      <a class="panel-block is-active" v-for="item in historyReversed" @click="itemClicked(item)">
+        <pre>
+          {{item}}
+        </pre>
       </a>
     </nav>
    </main>
