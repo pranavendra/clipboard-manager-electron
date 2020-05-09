@@ -10,7 +10,8 @@ function createWindow () {
     height: 600,
     frame: false,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true
     }
   })
   mainWindow.hide()
@@ -22,8 +23,10 @@ function createWindow () {
   })
 
   mainWindow.on('show', () => {
-    mainWindow.setPosition(0,0)
+    const bounds=tray.getBounds();
+    mainWindow.setPosition(bounds.x,bounds.y)
   })
+
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
