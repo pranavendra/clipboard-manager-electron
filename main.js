@@ -8,12 +8,22 @@ function createWindow () {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    frame: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
   })
+  mainWindow.hide()
 
   tray = new Tray('./icon/sphinx.png');
+
+  tray.on('click', () => {
+    mainWindow.isVisible() ? mainWindow.hide() : mainWindow.show()
+  })
+
+  mainWindow.on('show', () => {
+    mainWindow.setPosition(0,0)
+  })
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
